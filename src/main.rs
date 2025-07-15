@@ -12,7 +12,7 @@ mod routes;
 async fn main() {
     let app = Router::new()
         .route("/", get(index_handler))
-        .route("/assets/{file}", get(static_files_handler))
+        .route("/assets/{*file}", get(static_files_handler))
         .route("/instruments", get(instruments_list_handler))
         .route("/{instrument}", get(instrument_handler))
         .route("/default.css", get(default_css_handler));
