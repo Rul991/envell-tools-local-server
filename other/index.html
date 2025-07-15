@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="default.css">
+</head>
+<body>
+    <h2>Доступные инструменты</h2>
+    <ol id="links"></ol>
+
+    <script>
+        const links = document.querySelector('#links')
+
+        fetch('/instruments')
+        .then(res => res.json())
+        .then(value => {
+            value.forEach(name => {
+                const link = document.createElement('a')
+                link.href = `/${name}`
+                link.textContent = name
+
+                const container = document.createElement('li')
+                container.appendChild(link)
+
+                links.appendChild(container)
+            })
+        })
+    </script>
+</body>
+</html>

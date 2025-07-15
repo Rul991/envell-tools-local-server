@@ -1,0 +1,16 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+a {
+    color: rgb(71, 189, 205);
+}
+
+a:visited {
+    color: #885fc5;
+}

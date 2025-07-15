@@ -1,0 +1,35 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    height: 100vh;
+    overflow: hidden;
+    font-size: 32px;
+}
+
+hr {
+    width: 60%;
+}
+
+body {
+    text-align: center;
+    display: grid;
+
+    align-content: center;
+    justify-self: center;
+    justify-content: center;
+}
+
+#timer {
+    color: #ffd900;
+}
+
+#title {
+    color: #83c870;
+}
+
+img {
+    width: 50%;
+    justify-self: center;
+}
