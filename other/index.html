@@ -43,7 +43,7 @@
         fetch('/instruments')
         .then(res => res.json())
         .then(value => {
-            [...value, ...value, ...value, ...value, ...value, ...value, ...value, ...value, ...value, ].forEach(name => {
+            value.forEach(name => {
                 const link = document.createElement('a')
                 link.href = `/${name}`
                 link.textContent = name
