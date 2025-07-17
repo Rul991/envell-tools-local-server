@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная страница</title>
     <link rel="stylesheet" href="default.css">
+    <style>
+        body, html {
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        h2 {
+            text-align: center;
+            width: 100%;
+        }
+
+        #links {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 1rem;
+            padding: 1rem;
+
+        }
+
+        .link {
+            border: 1px solid white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+    </style>
 </head>
 <body>
     <h2>Доступные инструменты</h2>
-    <ol id="links"></ol>
+    <div id="links"></div>
 
     <script>
         const links = document.querySelector('#links')
@@ -16,12 +43,13 @@
         fetch('/instruments')
         .then(res => res.json())
         .then(value => {
-            value.forEach(name => {
+            [...value, ...value, ...value, ...value, ...value, ...value, ...value, ...value, ...value, ].forEach(name => {
                 const link = document.createElement('a')
                 link.href = `/${name}`
                 link.textContent = name
 
-                const container = document.createElement('li')
+                const container = document.createElement('div')
+                container.classList.add('link')
                 container.appendChild(link)
 
                 links.appendChild(container)
