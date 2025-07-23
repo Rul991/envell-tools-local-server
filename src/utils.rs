@@ -1,5 +1,3 @@
-use std::net::SocketAddr;
-
 use std::{ffi::OsString, fs::{create_dir, read_dir}};
 
 pub fn get_instruments() -> Vec<String> {
@@ -44,7 +42,7 @@ pub fn get_instruments() -> Vec<String> {
     instruments
 }
 
-pub fn print_instruments(addr: &SocketAddr) {
+pub fn print_instruments(addr: &str) {
     let mut index = 0;
     println!("Доступные инструменты:");
     

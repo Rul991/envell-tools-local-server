@@ -17,16 +17,13 @@ async fn main() {
         .route("/{instrument}", get(instrument_handler))
         .route("/default.css", get(default_css_handler));
         
-    let listener = TcpListener::bind("127.0.0.1:3000")
+    let listener = TcpListener::bind("0.0.0.0:3000")
         .await
         .unwrap();
     
-    let _ = listener
-        .local_addr()
-        .inspect(|addr| {
-            println!("Сервер запущен по адресу: http://{addr}\n");
-            print_instruments(addr);
-        });
+    let addr = "127.0.0.1:3000";
+    println!("Сервер запущен по адресу: http://{addr}\n");
+    print_instruments(addr);
 
     serve(
         listener, 
