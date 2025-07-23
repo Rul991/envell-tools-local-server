@@ -2,7 +2,7 @@
 
 ### Как использовать
 
-1. Скачать программу
+1. [Скачать программу](https://github.com/Rul991/envell-tools-local-server/releases/latest)
 
 2. Запустить программу
 
