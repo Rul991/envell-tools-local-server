@@ -1,4 +1,4 @@
-use axum::{body::Body, extract::{Path, Request}, response::{Html, IntoResponse, Response}, Json};
+use axum::{Json, body::Body, extract::{Path, Request}, http::{Response, StatusCode}, response::{Html, IntoResponse, Redirect}};
 use tokio::fs::read_to_string;
 use tower_http::services::ServeFile;
 
@@ -6,6 +6,10 @@ use crate::{consts::{DEFAULT_CSS, INDEX_HTML, NO_INSTRUMENTS_HTML}, utils::{get_
 
 pub async fn instruments_list_handler() -> impl IntoResponse {
     Json(get_instruments())
+}
+
+pub async fn fallback_handler() -> impl IntoResponse {
+    Redirect::to("/")
 }
 
 pub async fn default_css_handler() -> impl IntoResponse {
@@ -29,7 +33,7 @@ pub async fn static_files_handler(Path(file_path): Path<String>, req: Request<Bo
     ServeFile::new(file_path)
         .try_call(req)
         .await
-        .map_err(|_| axum::http::StatusCode::INTERNAL_SERVER_ERROR)
+        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)
         .into_response()
 }
 

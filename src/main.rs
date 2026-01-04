@@ -3,7 +3,7 @@ use std::env::args;
 use axum::{routing::get, serve, Router};
 use tokio::{main, net::TcpListener};
 
-use crate::routes::{default_css_handler, index_handler, instrument_handler, instruments_list_handler, static_files_handler};
+use crate::routes::{default_css_handler, fallback_handler, index_handler, instrument_handler, instruments_list_handler, static_files_handler};
 use crate::utils::print_instruments;
 
 mod utils;
@@ -25,7 +25,8 @@ async fn main() {
         .route("/assets/{*file}", get(static_files_handler))
         .route("/instruments", get(instruments_list_handler))
         .route("/{instrument}", get(instrument_handler))
-        .route("/default.css", get(default_css_handler));
+        .route("/default.css", get(default_css_handler))
+        .fallback(get(fallback_handler));
         
     let listener = TcpListener::bind(format!("0.0.0.0:{port}"))
         .await
